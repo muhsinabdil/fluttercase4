@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_case_4/Controller/login_controller.dart';
 
-class LoginView extends StatefulWidget {
+import '../Controller/cache_token_manager.dart';
+
+class LoginView extends StatefulWidget with CacheTokenManager {
   @override
   _LoginViewState createState() => _LoginViewState();
 }
@@ -10,6 +12,12 @@ class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _password = '';
+
+  @override
+  void initState() {
+    super.initState();
+    LoginController().checkLogin();
+  }
 
   @override
   Widget build(BuildContext context) {

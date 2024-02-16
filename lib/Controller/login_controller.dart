@@ -9,23 +9,30 @@ import '../Services/services.dart';
 import 'snackbar.dart';
 
 class LoginController with CacheTokenManager {
+  bool isAuthenticated = false;
   void login(BuildContext context, String username, String password) {
 //! context snackbar için kullanılıyor
 
     username = "eve.holt@reqres.in";
     password = "cityslicka";
 
-    bool isAuthenticated = false;
     LoginPostModel requestModel =
         LoginPostModel(email: username, password: password);
 
     if (isAuthenticated) {
-      //  showSnackBar(context, "login");
+      showSnackBar(context, "Login successful, already l");
     } else {
-      // showSnackBar(context, "Login failed");
+      showSnackBar(context, "Login failed");
     }
 
     _fetchLoginPostRequest(context, requestModel);
+  }
+
+  Future<void> checkLogin() async {
+    final token = await getToken();
+    if (token != null) {
+      isAuthenticated = true;
+    }
   }
 
   Future<void> _fetchLoginPostRequest(

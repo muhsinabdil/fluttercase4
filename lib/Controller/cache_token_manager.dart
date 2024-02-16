@@ -10,6 +10,11 @@ mixin CacheTokenManager {
   }
 }
 
-
+Future<String?> getToken() async {
+  //! token locale den alınacak
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs
+      .getString(CacheKey.TOKEN.toString()); //! TOKEN keyinden value alındı
+}
 
 enum CacheKey { TOKEN }
