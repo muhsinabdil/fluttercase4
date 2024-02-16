@@ -14,19 +14,14 @@ void httpStatusHandle({
     case 200:
       onSuccess();
       break;
-    case 201:
-      onSuccess();
-      showSnackBar(context, jsonDecode(response.body)['message'] ?? "");
-      break;
-
     case 400:
-      showSnackBar(context, jsonDecode(response.body)['message'] ?? "");
+      showSnackBar(context, jsonDecode(response.body)['error'] ?? "");
       break;
     case 401:
-      showSnackBar(context, jsonDecode(response.body)['message'] ?? "");
+      showSnackBar(context, jsonDecode(response.body)['error'] ?? "");
       break;
     case 500:
-      showSnackBar(context, jsonDecode(response.body)['message'] ?? "");
+      showSnackBar(context, jsonDecode(response.body)['error'] ?? "");
       break;
     default:
       showSnackBar(context, response.body); //! TODO: bunu düzenle
