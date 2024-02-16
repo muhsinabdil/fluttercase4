@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_case_4/Controller/cache_token_manager.dart';
 import 'package:flutter_case_4/Model/login_post_model.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Services/services.dart';
+import '../View/users_view.dart';
 import 'snackbar.dart';
 
 class LoginController with CacheTokenManager {
@@ -50,7 +53,8 @@ class LoginController with CacheTokenManager {
 
     if (request != null) {
       saveToken(request.token!); //! save token
-
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => UsersView()));
       showSnackBar(context, "Login success");
     } else {
       showSnackBar(context, "Login failed");
