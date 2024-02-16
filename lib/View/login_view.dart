@@ -102,7 +102,9 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     onPressed: () {},
                     child: Text(
                       'Forgot Password?',
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: kThirtTextColor,
+                          ),
                     ),
                   ),
                 ),
