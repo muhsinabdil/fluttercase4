@@ -133,7 +133,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

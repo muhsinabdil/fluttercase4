@@ -14,6 +14,7 @@ import 'snackbar.dart';
 
 class LoginController with CacheTokenManager {
   bool isAuthenticated = false;
+  bool isLoading = false;
   String? token;
 
   LoginController() {
@@ -42,6 +43,7 @@ class LoginController with CacheTokenManager {
 
   Future<void> _fetchLoginPostRequest(
       BuildContext context, LoginPostModel requestModel) async {
+    isLoading = true;
     LoginResponseModel? request;
     request = await Services.fetchPostData<LoginResponseModel>(
         context: context,
@@ -51,6 +53,7 @@ class LoginController with CacheTokenManager {
 
     if (request != null) {
       saveToken(request.token!); //! save token
+      isLoading = false;
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => UsersView()));
       showSnackBar(context, "Login success");
