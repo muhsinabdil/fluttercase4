@@ -55,4 +55,43 @@ class Services {
     }
     return value;
   }
+
+  static Future<dynamic>? fetchGetData<T extends IBaseModel>(
+      {required BuildContext context,
+      required String url,
+      required IBaseModel responseModel}) async {
+    var value;
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString("TOKEN") ?? "";
+
+      http.Response responseGet = await http.get(Uri.parse(url), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      });
+
+      String body = responseGet.body;
+
+      httpStatusHandle(
+          response: responseGet,
+          context: context,
+          onSuccess: () {
+            if (json.decode(body) is List) {
+              value = json
+                  .decode(body)
+                  .map((e) => responseModel.fromJson(e))
+                  .toList()
+                  .cast<T>();
+            } else if (json.decode(body) is Map) {
+              value = responseModel.fromJson(json.decode(body));
+            } else {
+              value = json.decode(body);
+            }
+          });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return value;
+  }
 }
