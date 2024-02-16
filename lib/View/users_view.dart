@@ -15,21 +15,24 @@ class _UsersViewState extends ConsumerState<UsersView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Users'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              ref
+                  .read(LoginProvider)
+                  .authLogout(); //!çıkış yapılıp token siliniyor
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginView()));
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Users'),
-            ElevatedButton(
-                onPressed: () {
-                  ref
-                      .read(LoginProvider)
-                      .authLogout(); //!çıkış yapılıp token siliniyor
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginView()));
-                },
-                child: Text("Logout"))
           ],
         ),
       ),
