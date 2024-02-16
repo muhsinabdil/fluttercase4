@@ -1,7 +1,17 @@
+import 'package:flutter/material.dart';
+
+import 'snackbar.dart';
+
 class LoginController {
-  void login(String username, String password) {
-    // Perform login logic here
-    // You can use the provided username and password to authenticate the user
-    // Implement your login logic here
+  void login(BuildContext context, String username, String password) {
+//! context snackbar için kullanılıyor
+
+    bool isAuthenticated = false;
+
+    if (isAuthenticated) {
+      showSnackBar(context, "login ");
+    } else {
+      showSnackBar(context, "Login failed");
+    }
   }
 }

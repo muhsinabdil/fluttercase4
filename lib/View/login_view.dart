@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_case_4/Controller/login_controller.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -56,7 +57,8 @@ class _LoginViewState extends State<LoginView> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    // Perform login logic here
+                    //! login logic here
+                    LoginController().login(context, _username, _password);
                   }
                 },
                 child: Text('Login'),
