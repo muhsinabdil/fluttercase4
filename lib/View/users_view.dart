@@ -76,7 +76,7 @@ class _UsersViewState extends ConsumerState<UsersView> {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => LogoutView()));
             },
-            icon: Icon(Icons.logout),
+            icon: Icon(Icons.logout, color: kSecondIconColor),
           ),
         ],
       ),
