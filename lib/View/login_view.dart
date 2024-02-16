@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_case_4/Controller/login_controller.dart';
+import 'package:flutter_case_4/View/users_view.dart';
 
 import '../Controller/cache_token_manager.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginView extends StatefulWidget with CacheTokenManager {
+class LoginView extends ConsumerStatefulWidget {
   @override
-  _LoginViewState createState() => _LoginViewState();
+  ConsumerState createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends ConsumerState<LoginView> {
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _password = '';
@@ -16,7 +18,16 @@ class _LoginViewState extends State<LoginView> {
   @override
   void initState() {
     super.initState();
-    LoginController().checkLogin();
+
+    //! check login
+    bool _login = ref.read(LoginProvider).isAuthenticated;
+    if (_login) {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  UsersView())); //! giriş yapılmış ise kullanıcılar sayfasına yönlendir
+    }
   }
 
   @override
