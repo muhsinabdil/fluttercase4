@@ -1,6 +1,6 @@
 import 'package:flutter_case_4/Model/ibase_model.dart';
 
-class LoginResponseModel {
+class LoginResponseModel extends IBaseModel {
   String? token;
 
   LoginResponseModel({this.token});
@@ -13,5 +13,10 @@ class LoginResponseModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['token'] = this.token;
     return data;
+  }
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return LoginResponseModel.fromJson(json);
   }
 }
