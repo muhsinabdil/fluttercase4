@@ -25,7 +25,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
     //! Login kontrolü yapılıyor
     await ref.read(LoginProvider).checkLogin(); //! login kontrolü
     if (ref.read(LoginProvider).isAuthenticated) {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 3));
 
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => UsersView()));

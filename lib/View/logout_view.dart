@@ -29,7 +29,13 @@ class LogoutView extends StatelessWidget {
           SizedBox(height: kDefaultPadding),
           CircularProgressIndicator(),
           SizedBox(height: 10),
-          Text('Logout...'),
+          Text(
+            'Logout...',
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(color: kSecondTextColor),
+          ),
         ],
       )),
     );

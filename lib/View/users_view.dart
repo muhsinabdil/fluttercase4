@@ -59,7 +59,13 @@ class _UsersViewState extends ConsumerState<UsersView> {
     return Scaffold(
       backgroundColor: Colors.purple,
       appBar: AppBar(
-        title: Text('Users'),
+        title: Text(
+          'Users',
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: kSecondTextColor),
+        ),
         actions: [
           IconButton(
             onPressed: () {
