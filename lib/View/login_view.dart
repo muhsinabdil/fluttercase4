@@ -19,8 +19,10 @@ class _LoginViewState extends ConsumerState<LoginView> {
   void initState() {
     super.initState();
 
+    ref.read(LoginProvider).checkLogin();
+
     //! check login
-    bool _login = ref.read(LoginProvider).isAuthenticated;
+    bool _login = ref.read(LoginProvider).isAuthenticated ?? false;
     if (_login) {
       Navigator.pushReplacement(
           context,
@@ -77,7 +79,9 @@ class _LoginViewState extends ConsumerState<LoginView> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     //! login logic here
-                    LoginController().login(context, _username, _password);
+                    ref
+                        .read(LoginProvider)
+                        .login(context, _username, _password);
                   }
                 },
                 child: Text('Login'),
