@@ -11,6 +11,9 @@ class LoginController {
   void login(BuildContext context, String username, String password) {
 //! context snackbar için kullanılıyor
 
+    username = "eve.holt@reqres.in";
+    password = "cityslicka";
+
     bool isAuthenticated = false;
     LoginPostModel requestModel =
         LoginPostModel(email: username, password: password);

@@ -1,4 +1,4 @@
-const baseUrl = "https://reqres.in/";
+const baseUrl = "https://reqres.in";
 
 const apiUrl = baseUrl + "/api";
 
