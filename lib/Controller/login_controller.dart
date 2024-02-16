@@ -10,7 +10,7 @@ import '../Services/services.dart';
 import 'snackbar.dart';
 
 class LoginController with CacheTokenManager {
-  bool? isAuthenticated;
+  bool isAuthenticated = false;
 
   LoginController() {
     checkLogin();

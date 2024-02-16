@@ -16,23 +16,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
   String _password = '';
 
   @override
-  void initState() {
-    super.initState();
-
-    ref.read(LoginProvider).checkLogin();
-
-    //! check login
-    bool _login = ref.read(LoginProvider).isAuthenticated ?? false;
-    if (_login) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  UsersView())); //! giriş yapılmış ise kullanıcılar sayfasına yönlendir
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -1,15 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UsersView extends StatefulWidget {
+import '../Controller/login_controller.dart';
+
+class UsersView extends ConsumerStatefulWidget {
   @override
-  _UsersViewState createState() => _UsersViewState();
+  ConsumerState createState() => _UsersViewState();
 }
 
-class _UsersViewState extends State<UsersView> {
+class _UsersViewState extends ConsumerState<UsersView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Users List"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Users'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Users'),
+            ElevatedButton(
+                onPressed: () {
+                  //  ref.read(LoginProvider).logout();
+                },
+                child: Text("Logout"))
+          ],
+        ),
+      ),
     );
   }
 }
