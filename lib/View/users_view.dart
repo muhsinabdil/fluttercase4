@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Controller/login_controller.dart';
+import 'login_view.dart';
 
 class UsersView extends ConsumerStatefulWidget {
   @override
@@ -22,7 +23,11 @@ class _UsersViewState extends ConsumerState<UsersView> {
             Text('Users'),
             ElevatedButton(
                 onPressed: () {
-                  //  ref.read(LoginProvider).logout();
+                  ref
+                      .read(LoginProvider)
+                      .authLogout(); //!çıkış yapılıp token siliniyor
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginView()));
                 },
                 child: Text("Logout"))
           ],

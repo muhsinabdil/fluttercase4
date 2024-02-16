@@ -35,6 +35,10 @@ class LoginController with CacheTokenManager {
     }
   }
 
+  Future<void> authLogout() async {
+    isAuthenticated = await removeToken();
+  }
+
   Future<void> _fetchLoginPostRequest(
       BuildContext context, LoginPostModel requestModel) async {
     LoginResponseModel? request;

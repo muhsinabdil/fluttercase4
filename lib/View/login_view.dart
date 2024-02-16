@@ -61,7 +61,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    //! login logic here
+                    //! login işlemleri yapılacak
                     ref
                         .read(LoginProvider)
                         .login(context, _username, _password);
