@@ -8,24 +8,29 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../Services/services.dart';
 import 'snackbar.dart';
 
-class UsersController {
-  UsersResponseModel? usersResponseModel;
+class UsersController extends ChangeNotifier {
+  UsersResponseModel usersResponseModel = UsersResponseModel(data: []);
+  bool isLoading = false;
 
   Future<void> fetchUsersRequest(BuildContext context) async {
+    isLoading = false;
     UsersResponseModel? request;
     request = await Services.fetchGetData<UsersResponseModel>(
       context: context,
-      url: postLogin,
+      url: getUsers,
       responseModel: UsersResponseModel(),
     );
 
     if (request != null) {
       usersResponseModel = request;
+      isLoading = true;
     } else {
-      showSnackBar(context, "Users fetch failed");
+      showSnackBar(context, "Not Found");
     }
+    notifyListeners();
   }
 }
 
-final UsersProvider =
-    Provider((ref) => UsersController());//! login için oluşturduğumuz provider
+final UsersProvider = ChangeNotifierProvider<UsersController>((ref) {
+  return UsersController();
+});

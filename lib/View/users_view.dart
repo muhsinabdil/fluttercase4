@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_case_4/Controller/users_controller.dart';
+import 'package:flutter_case_4/View/custom_shimmer.dart';
 import 'package:flutter_case_4/View/users_response_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,14 +13,19 @@ class UsersView extends ConsumerStatefulWidget {
 }
 
 class _UsersViewState extends ConsumerState<UsersView> {
+  UsersResponseModel? usersModel;
+
   @override
   void initState() {
-    ref.read(UsersProvider).fetchUsersRequest(context); //! login kontrolü
+    ref.read(UsersProvider).fetchUsersRequest(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    usersModel = ref.watch(UsersProvider).usersResponseModel;
+
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Users'),
@@ -39,26 +45,25 @@ class _UsersViewState extends ConsumerState<UsersView> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          ref
-              .read(UsersProvider)
-              .fetchUsersRequest(context); //! users listesini yenilemek için
+          await ref.read(UsersProvider).fetchUsersRequest(context);
         },
         child: ListView.builder(
+          itemCount: usersModel == null ? 5 : usersModel!.data!.length,
           itemBuilder: (context, index) {
-            return ref.read(UsersProvider).usersResponseModel == null
-                ? SizedBox()
-                : ListTile(
-                    title: Text(ref
-                        .read(UsersProvider)
-                        .usersResponseModel!
-                        .data![index]
-                        .email!),
-                    subtitle: Text(ref
-                        .read(UsersProvider)
-                        .usersResponseModel!
-                        .data![index]
-                        .firstName!),
-                  );
+            return usersModel == null
+                ? CustomShimmer(
+                    height: screenSize.height * 0.1,
+                  )
+                : usersModel!.data!.isEmpty
+                    ? CustomShimmer(
+                        height: screenSize.height * 0.1,
+                      )
+                    : ListTile(
+                        title: Text(usersModel!.data![index].firstName! +
+                            " " +
+                            usersModel!.data![index].lastName!),
+                        subtitle: Text("subtitle"),
+                      );
           },
         ),
       ),
