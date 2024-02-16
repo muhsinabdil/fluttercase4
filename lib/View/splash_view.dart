@@ -38,14 +38,20 @@ class _SplashViewState extends ConsumerState<SplashView> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            CircularProgressIndicator(),
+          children: [
             SizedBox(height: 10),
-            Text('Loading...'),
+            SizedBox(
+              width: screenSize.width * 0.5,
+              height: screenSize.width * 0.5,
+              child: Image.asset("assets/images/logo.jpg"),
+            ),
+            CircularProgressIndicator(),
           ],
         ),
       ),

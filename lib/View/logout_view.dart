@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_case_4/View/login_view.dart';
 import 'dart:async';
 
+import 'view_consts.dart';
+
 class LogoutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,13 +14,24 @@ class LogoutView extends StatelessWidget {
       );
     });
 
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Logout'),
-      ),
       body: Center(
-        child: Text('Logging out...'),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: kDefaultPadding),
+          SizedBox(
+            width: screenSize.width * 0.5,
+            height: screenSize.width * 0.5,
+            child: Image.asset("assets/images/logo.jpg"),
+          ),
+          SizedBox(height: kDefaultPadding),
+          CircularProgressIndicator(),
+          SizedBox(height: 10),
+          Text('Logout...'),
+        ],
+      )),
     );
   }
 }
