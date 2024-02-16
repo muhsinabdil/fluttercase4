@@ -17,4 +17,9 @@ Future<String?> getToken() async {
       .getString(CacheKey.TOKEN.toString()); //! TOKEN keyinden value alındı
 }
 
+Future<bool> removeToken() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.remove(CacheKey.TOKEN.toString());
+}
+
 enum CacheKey { TOKEN }

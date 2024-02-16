@@ -22,7 +22,8 @@ class _SplashViewState extends ConsumerState<SplashView> {
   }
 
   Future<void> controlToLogin() async {
-    await ref.read(LoginProvider).checkLogin();
+    //! Login kontrolü yapılıyor
+    await ref.read(LoginProvider).checkLogin(); //! login kontrolü
     if (ref.read(LoginProvider).isAuthenticated) {
       await Future.delayed(const Duration(seconds: 1));
 
