@@ -6,6 +6,7 @@ import 'package:flutter_case_4/View/view_consts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Controller/login_controller.dart';
+import '../Controller/snackbar.dart';
 import 'login_view.dart';
 
 class UsersView extends ConsumerStatefulWidget {
@@ -48,6 +49,7 @@ class _UsersViewState extends ConsumerState<UsersView> {
     if (pageNum > 1 && !isPageLoading) {
       usersTempModel = ref.watch(UsersProvider).usersResponseModel;
       usersModel!.data!.addAll(usersTempModel!.data!);
+      usersTempModel = null;
     } else if (pageNum == 1) {
       usersModel = ref.watch(UsersProvider).usersResponseModel;
     }

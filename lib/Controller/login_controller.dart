@@ -54,8 +54,6 @@ class LoginController with CacheTokenManager {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => UsersView()));
       showSnackBar(context, "Login success");
-    } else {
-      showSnackBar(context, "Login failed");
     }
   }
 }
