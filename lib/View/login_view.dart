@@ -37,7 +37,10 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 SizedBox(height: kDefaultPadding),
                 TextFormField(
                   textInputAction: TextInputAction.next,
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.copyWith(color: kSecondTextColor),
                   decoration: InputDecoration(
                     // Set fill color
                     filled: true,
@@ -48,9 +51,8 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     ),
 
                     labelText: "Username",
-                    labelStyle: Theme.of(context)
-                        .textTheme
-                        .bodyLarge, // Set label text color
+                    labelStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: kSecondTextColor), // Set label text color
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -65,7 +67,10 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 SizedBox(height: kDefaultPadding),
                 TextFormField(
                   textInputAction: TextInputAction.done,
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.copyWith(color: kSecondTextColor),
                   decoration: InputDecoration(
                     // Set fill color
                     filled: true,
@@ -76,9 +81,8 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     ),
 
                     labelText: "Password",
-                    labelStyle: Theme.of(context)
-                        .textTheme
-                        .bodyLarge, // Set label text color
+                    labelStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: kSecondTextColor), // Set label text color
                   ),
                   obscureText: true,
                   validator: (value) {
