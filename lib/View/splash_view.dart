@@ -6,6 +6,7 @@ import 'package:flutter_case_4/View/login_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'users_view.dart';
+import 'view_consts.dart';
 
 class SplashView extends ConsumerStatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -45,12 +46,13 @@ class _SplashViewState extends ConsumerState<SplashView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
+            SizedBox(height: kDefaultPadding),
             SizedBox(
               width: screenSize.width * 0.5,
               height: screenSize.width * 0.5,
               child: Image.asset("assets/images/logo.jpg"),
             ),
+            SizedBox(height: screenSize.height * 0.1),
             CircularProgressIndicator(),
           ],
         ),
