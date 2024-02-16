@@ -21,10 +21,10 @@ class LoginController {
       // showSnackBar(context, "Login failed");
     }
 
-    _fetchPostRequest(context, requestModel);
+    _fetchLoginPostRequest(context, requestModel);
   }
 
-  Future<void> _fetchPostRequest(
+  Future<void> _fetchLoginPostRequest(
       BuildContext context, LoginPostModel requestModel) async {
     LoginResponseModel? request;
     request = await Services.fetchPostData<LoginResponseModel>(
