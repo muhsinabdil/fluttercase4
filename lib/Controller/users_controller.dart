@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_case_4/Services/services_consts.dart';
-import 'package:flutter_case_4/View/users_response_model.dart';
+import 'package:flutter_case_4/Model/users_response_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Services/services.dart';

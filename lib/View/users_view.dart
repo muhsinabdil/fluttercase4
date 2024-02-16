@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_case_4/Controller/users_controller.dart';
 import 'package:flutter_case_4/View/custom_shimmer.dart';
 import 'package:flutter_case_4/View/logout_view.dart';
-import 'package:flutter_case_4/View/users_response_model.dart';
+import 'package:flutter_case_4/Model/users_response_model.dart';
 import 'package:flutter_case_4/View/view_consts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
