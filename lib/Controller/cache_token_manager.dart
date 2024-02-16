@@ -8,18 +8,18 @@ mixin CacheTokenManager {
         CacheKey.TOKEN.toString(), token); //! TOKEN keyi ile kaydedildi
     return true;
   }
-}
 
-Future<String?> getToken() async {
-  //! token locale den alınacak
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs
-      .getString(CacheKey.TOKEN.toString()); //! TOKEN keyinden value alındı
-}
+  Future<String?> getToken() async {
+    //! token locale den alınacak
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs
+        .getString(CacheKey.TOKEN.toString()); //! TOKEN keyinden value alındı
+  }
 
-Future<bool> removeToken() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.remove(CacheKey.TOKEN.toString());
+  Future<bool> removeToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.remove(CacheKey.TOKEN.toString());
+  }
 }
 
 enum CacheKey { TOKEN }

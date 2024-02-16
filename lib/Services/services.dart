@@ -5,11 +5,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_case_4/Controller/cache_token_manager.dart';
 import 'package:flutter_case_4/Controller/login_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Controller/http_status_handles.dart';
 import '../Model/ibase_model.dart';
 import '../Controller/snackbar.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Services {
   //! http request işlemleri yapılıyor
@@ -21,7 +21,9 @@ class Services {
     var value;
 
     try {
-      String? token = await getToken();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString("TOKEN") ?? "";
+
       http.Response responseGet = await http.post(Uri.parse(url),
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
