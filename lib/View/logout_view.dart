@@ -26,9 +26,9 @@ class LogoutView extends StatelessWidget {
             height: screenSize.width * 0.5,
             child: Image.asset("assets/images/logo.jpg"),
           ),
-          SizedBox(height: kDefaultPadding),
+          SizedBox(height: screenSize.height * 0.1),
           CircularProgressIndicator(),
-          SizedBox(height: 10),
+          SizedBox(height: screenSize.height * 0.1),
           Text(
             'Logout...',
             style: Theme.of(context)
