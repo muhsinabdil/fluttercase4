@@ -14,6 +14,7 @@ import 'snackbar.dart';
 
 class LoginController with CacheTokenManager {
   bool isAuthenticated = false;
+  String? token;
 
   LoginController() {
     checkLogin();
@@ -22,9 +23,6 @@ class LoginController with CacheTokenManager {
   void login(BuildContext context, String username, String password) {
 //! context snackbar için kullanılıyor
 
-    username = "eve.holt@reqres.in";
-    password = "cityslicka";
-
     LoginPostModel requestModel =
         LoginPostModel(email: username, password: password);
 
@@ -32,7 +30,7 @@ class LoginController with CacheTokenManager {
   }
 
   Future<void> checkLogin() async {
-    final token = await getToken();
+    token = await getToken();
     if (token != null) {
       isAuthenticated = true;
     }
